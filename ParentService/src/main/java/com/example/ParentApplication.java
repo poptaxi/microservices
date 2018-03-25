@@ -34,15 +34,15 @@ public class ParentApplication {
 		return new RestTemplate();
 	}
 
-	@RequestMapping("/callauctions")
+	@RequestMapping("/callhome")
 	public String callHome() {
-		String response = restTemplate.getForObject("http://localhost:8081/auctions", String.class);
+		String response = restTemplate.getForObject("http://localhost:8081/home", String.class);
 		return "Zipkin [" + response + "]";
 	}
 
-	@RequestMapping(value = "/auctions", method = RequestMethod.GET)
-	public String getAuctions() throws InterruptedException {
-		Thread.sleep(1000);
+	@RequestMapping(value = "/home", method = RequestMethod.GET)
+	public String getHome() throws InterruptedException {
+		Thread.sleep(2000);
 		return "Welcome to Layer2 " + callLayer3();
 	}
 
