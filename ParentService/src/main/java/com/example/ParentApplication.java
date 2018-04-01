@@ -8,7 +8,6 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cloud.sleuth.sampler.AlwaysSampler;
 import org.springframework.context.annotation.Bean;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.client.RestTemplate;
 
@@ -34,24 +33,40 @@ public class ParentApplication {
 		return new RestTemplate();
 	}
 
-	@RequestMapping("/callhome")
-	public String callHome() {
-		String response = restTemplate.getForObject("http://localhost:8081/home", String.class);
-		return "Zipkin [" + response + "]";
+	@RequestMapping("/callService1")
+	public String callService1() {
+		String response = restTemplate.getForObject("http://localhost:8081/service1", String.class);
+		return "Hello from Parent Service [" + response + "]";
 	}
 
-	@RequestMapping(value = "/home", method = RequestMethod.GET)
-	public String getHome() throws InterruptedException {
-		Thread.sleep(2000);
-		return "Welcome to Layer2 " + callLayer3();
+	@RequestMapping("/callService2")
+	public String callService2() {
+		String response = restTemplate.getForObject("http://localhost:8082/service2", String.class);
+		return "Hello from Parent Service [" + response + "]";
 	}
 
-	public String callLayer3() {
-		return "Welcome to layer3 " + callLayer4();
+	@RequestMapping("/callService3")
+	public String callService3() {
+		String response = restTemplate.getForObject("http://localhost:8083/service3", String.class);
+		return "Hello from Parent Service [" + response + "]";
 	}
 
-	public String callLayer4() {
-		return "Hi I am layer 4";
+	@RequestMapping("/callService4")
+	public String callService4() {
+		String response = restTemplate.getForObject("http://localhost:8084/service4", String.class);
+		return "Hello from Parent Service [" + response + "]";
+	}
+
+	@RequestMapping("/callService5")
+	public String callService5() {
+		String response = restTemplate.getForObject("http://localhost:8085/service5", String.class);
+		return "Hello from Parent Service [" + response + "]";
+	}
+
+	@RequestMapping("/callService6")
+	public String callService6() {
+		String response = restTemplate.getForObject("http://localhost:8086/service6", String.class);
+		return "Hello from Parent Service [" + response + "]";
 	}
 
 }
