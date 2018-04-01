@@ -36,7 +36,7 @@ public class Service6 {
 
 	@RequestMapping("/service6")
 	public String callHome() {
-		String response = restTemplate.getForObject("http://localhost:8087/home", String.class);
+		String response = restTemplate.getForObject("http://localhost:8086/home", String.class);
 		return "Hello from service6 [" + response + "]";
 	}
 

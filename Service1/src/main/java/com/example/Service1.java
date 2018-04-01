@@ -34,24 +34,16 @@ public class Service1 {
 		return new RestTemplate();
 	}
 
-	@RequestMapping("/callhome")
+	@RequestMapping("/service1")
 	public String callHome() {
-		String response = restTemplate.getForObject("http://localhost:8082/home", String.class);
-		return "Zipkin [" + response + "]";
+		String response = restTemplate.getForObject("http://localhost:8081/home", String.class);
+		return "Hello from service1 [" + response + "]";
 	}
 
 	@RequestMapping(value = "/home", method = RequestMethod.GET)
 	public String getHome() throws InterruptedException {
 		Thread.sleep(2000);
-		return "Welcome to Layer2 " + callLayer3();
-	}
-
-	public String callLayer3() {
-		return "Welcome to layer3 " + callLayer4();
-	}
-
-	public String callLayer4() {
-		return "Hi I am layer 4";
+		return "===Welcome to service1===";
 	}
 
 }
