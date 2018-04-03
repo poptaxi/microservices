@@ -13,7 +13,7 @@ import io.swagger.annotations.ApiOperation;
 
 @Api(tags = "Example")
 @RestController
-public class ExampleController {
+public class ParentServiceController {
 
 	@Autowired
 	private RestTemplate restTemplate;
@@ -41,27 +41,6 @@ public class ExampleController {
 	@ApiOperation(value = "Get service3 data")
 	public String callService3() {
 		String response = restTemplate.getForObject("http://localhost:8083/service3", String.class);
-		return "Hello from Parent Service [" + response + "]";
-	}
-
-	@RequestMapping(value = "/callService4", method = RequestMethod.GET)
-	@ApiOperation(value = "Get service4 data")
-	public String callService4() {
-		String response = restTemplate.getForObject("http://localhost:8084/service4", String.class);
-		return "Hello from Parent Service [" + response + "]";
-	}
-
-	@RequestMapping(value = "/callService5", method = RequestMethod.GET)
-	@ApiOperation(value = "Get service5 data")
-	public String callService5() {
-		String response = restTemplate.getForObject("http://localhost:8085/service5", String.class);
-		return "Hello from Parent Service [" + response + "]";
-	}
-
-	@RequestMapping(value = "/callService6", method = RequestMethod.GET)
-	@ApiOperation(value = "Get service6 data")
-	public String callService6() {
-		String response = restTemplate.getForObject("http://localhost:8086/service6", String.class);
 		return "Hello from Parent Service [" + response + "]";
 	}
 
