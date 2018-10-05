@@ -25,7 +25,7 @@ public class Service1 {
 
 	@RequestMapping("/service1")
 	public String callHome() throws InterruptedException {
-		Thread.sleep(2000);
+		//Thread.sleep(2000);
 		return "===Response from service1===";
 	}
 
